@@ -11,7 +11,7 @@ const (
 	address = "localhost:50051"
 )
 
-// 添加一个测试的商品
+// AddProduct 添加一个测试的商品
 func AddProduct(ctx context.Context, client product.ProductInfoClient) (id string) {
 	aMac := &product.Product{Name: "Mac Book Pro 2019", Description: "From Apple Inc."}
 	productId, err := client.AddProduct(ctx, aMac)
@@ -23,7 +23,7 @@ func AddProduct(ctx context.Context, client product.ProductInfoClient) (id strin
 	return productId.Value
 }
 
-// 获取一个商品
+// GetProduct 获取一个商品
 func GetProduct(ctx context.Context, client product.ProductInfoClient, id string) {
 	p, err := client.GetProduct(ctx, &product.ProductId{Value: id})
 	if err != nil {
