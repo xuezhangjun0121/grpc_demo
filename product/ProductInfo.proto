@@ -1,0 +1,43 @@
+syntax = "proto3";  // 指定proto版本
+package product;  // 指定默认包命
+
+option go_package = "/product";  // 指定golang包名
+
+// 定义rpc服务
+service ProductInfo {
+  // 定义函数
+  //添加商品
+  rpc addProduct(Product) returns (ProductId);
+  //获取商品
+  rpc getProduct(ProductId) returns (Product);
+}
+
+// 定义请求内容 ？
+message ProductId {
+  string value = 1;
+}
+
+// 定义响应内容 ？
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+//go.mod文件生成过程
+// 在项目目录下执行： go mod init grpc_demo
+// 更新go.mod：go mod tidy
+
+
+// 通过这个命令生成的ProductInfo.pb.go文件
+// protoc --go_out=plugins=grpc:. --go_opt=paths=source_relative ProductInfo.proto
+
+//这是使用 Protocol Buffers 的编译器 protoc 命令行工具来生成 Go 语言代码的命令，以下是各个参数的含义：
+//
+//    --go_out=plugins=grpc:.: 表示将 .proto 文件编译为 Go 语言代码，并使用 gRPC 插件来生成支持 gRPC 协议的代码。其中，. 表示输出文件的目录为当前目录。
+//
+//    --go_opt=paths=source_relative: 表示设置生成的 Go 语言 import 路径为源文件的相对路径，以避免在不同项目中重复导入同一个包时出现问题。
+//
+//    ProductInfo.proto: 表示要编译的 .proto 文件名。
+//
+//综上所述，该命令的作用是将指定的 .proto 文件编译为支持 gRPC 协议的 Go 语言代码，并将输出文件保存在当前目录下，同时将 import 路径设置为源文件的相对路径。
