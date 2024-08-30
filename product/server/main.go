@@ -18,7 +18,7 @@ type server struct {
 	productMap map[string]*product.Product
 }
 
-// 添加商品
+// AddProduct 添加商品
 func (s *server) AddProduct(ctx context.Context, req *product.Product) (resp *product.ProductId, err error) {
 	resp = &product.ProductId{}
 	out, err := uuid.NewV4()
@@ -36,7 +36,7 @@ func (s *server) AddProduct(ctx context.Context, req *product.Product) (resp *pr
 	return
 }
 
-// 获取商品
+// GetProduct 获取商品
 func (s *server) GetProduct(ctx context.Context, req *product.ProductId) (resp *product.Product, err error) {
 	if s.productMap == nil {
 		s.productMap = make(map[string]*product.Product)
