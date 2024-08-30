@@ -12,12 +12,12 @@ service ProductInfo {
   rpc getProduct(ProductId) returns (Product);
 }
 
-// 定义请求内容 ？
+// 定义消息类型
 message ProductId {
   string value = 1;
 }
 
-// 定义响应内容 ？
+// 定义消息类型
 message Product {
   string id = 1;
   string name = 2;
@@ -41,3 +41,23 @@ message Product {
 //    ProductInfo.proto: 表示要编译的 .proto 文件名。
 //
 //综上所述，该命令的作用是将指定的 .proto 文件编译为支持 gRPC 协议的 Go 语言代码，并将输出文件保存在当前目录下，同时将 import 路径设置为源文件的相对路径。
+
+//    关键字介绍
+//    proto文件是Google Protocol Buffers的定义文件，用于定义数据结构和消息格式。以下是proto文件中常用的关键字：
+//
+//    syntax：指定proto文件使用的语法版本。
+//    package：指定生成的代码所在的包名。
+//    import：导入其他proto文件。
+//    option：设置特定的选项。
+//    message：定义消息类型。
+//    enum：定义枚举类型。
+//    service：定义服务接口。
+//    rpc：定义远程过程调用方法。
+//    oneof：定义互斥字段，只能选择其中一个字段。
+//    map：定义映射类型，类似于字典。
+//    repeated：定义重复字段，可以有多个值。
+//    required：定义必需字段，必须有值。
+//    optional：定义可选字段，可以有值也可以为空。
+//    extensions：定义扩展字段。
+//    extend：扩展已有的消息类型或枚举类型。
+//    这些关键字可以根据需要组合使用，以定义出符合需求的数据结构和消息格式。
